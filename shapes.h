@@ -1,6 +1,6 @@
 #pragma once
 
-namespace shapes
+namespace td
 {
 
 struct IDrawable
@@ -45,4 +45,4 @@ private :
 	int m_x, m_y;
 };
 
-} // namespace shapes
+} // namespace td

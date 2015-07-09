@@ -81,7 +81,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="level.cpp" />
+    <ClCompile Include="spawn.cpp" />
+    <ClCompile Include="navgrid.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="shapes.cpp" />
+    <ClCompile Include="timer.cpp" />
+    <ClCompile Include="towers.cpp" />
+    <ClCompile Include="units.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="level.h" />
+    <ClInclude Include="spawn.h" />
+    <ClInclude Include="navgrid.h" />
+    <ClInclude Include="shapes.h" />
+    <ClInclude Include="timer.h" />
+    <ClInclude Include="towers.h" />
+    <ClInclude Include="units.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

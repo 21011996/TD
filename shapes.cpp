@@ -1,7 +1,7 @@
 #include "labengine/labengine.h"
 #include "shapes.h"
 
-namespace shapes
+namespace td
 {
 
 void MyLine::draw(int x, int y) {
@@ -21,4 +21,4 @@ void MyPoint::draw(int x, int y) {
 }
 
 
-} // namespace shapes
+} // namespace td

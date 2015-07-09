@@ -20,7 +20,7 @@ private :
 	int m_width, m_heigth, m_size;
 };
 
-using namespace shapes;
+using namespace td;
 
 void MyWeb::draw(int flag, int x, int y) {
 	if (flag == 1) {
@@ -168,17 +168,20 @@ int main()
 	while (1) {
 		LabClear();
 
-		labkey_t key = LabInputKey();
-		if (key == LABKEY_ESC) {
-			break;
+		if (LabInputKeyReady())
+		{
+			labkey_t key = LabInputKey();
+			if (key == LABKEY_ESC) {
+				break;
+			}
+			if (key == LABKEY_ENTER) {
+				flag = 1;
+			}
+			if (key == LABKEY_BACK) {
+				flag = 0;
+			}
+			cursor.move(key);
 		}
-		if (key == LABKEY_ENTER) {
-			flag = 1;
-		}
-		if (key == LABKEY_BACK) {
-			flag = 0;
-		}
-		cursor.move(key);
 		web.draw(flag, cursor.m_x, cursor.m_y);
 		
 		LabDrawFlush();
