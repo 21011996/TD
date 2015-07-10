@@ -1,9 +1,11 @@
 #pragma once
 
+#include "shapes.h"
+
 namespace td
 {
 
-struct Spawn
+struct Spawn : IDrawable
 {
 
 };

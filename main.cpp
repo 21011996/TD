@@ -33,7 +33,7 @@ int main()
 			if (key == LABKEY_ESC) {
 				break;
 			}
-			if (key == LABKEY_ENTER) {
+			if (key == LABKEY_BACK) {
 				if (grid.get_opacity()) {
 					grid.set_opacity(0);
 				} else {
