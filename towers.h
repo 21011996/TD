@@ -4,7 +4,7 @@
 namespace td
 {
 
-struct Tower : IDrawable
+struct Tower
 {
 
 };

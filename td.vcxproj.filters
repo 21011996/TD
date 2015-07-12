@@ -28,14 +28,14 @@
     <ClCompile Include="towers.cpp">
       <Filter>Game objects</Filter>
     </ClCompile>
-    <ClCompile Include="spawn.cpp">
-      <Filter>Game objects</Filter>
-    </ClCompile>
     <ClCompile Include="level.cpp">
       <Filter>Game objects</Filter>
     </ClCompile>
     <ClCompile Include="timer.cpp">
       <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="spawner.cpp">
+      <Filter>Game objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -51,14 +51,14 @@
     <ClInclude Include="towers.h">
       <Filter>Game objects</Filter>
     </ClInclude>
-    <ClInclude Include="spawn.h">
-      <Filter>Game objects</Filter>
-    </ClInclude>
     <ClInclude Include="level.h">
       <Filter>Game objects</Filter>
     </ClInclude>
     <ClInclude Include="timer.h">
       <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="spawner.h">
+      <Filter>Game objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
