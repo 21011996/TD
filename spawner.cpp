@@ -3,12 +3,9 @@
 namespace td{
 
 	void Spawner::draw() {
-		MyLine toFill(0, 0, 75, 0);
 		LabSetColor(LABCOLOR_CYAN);
-
-		for (int i = -37; i<37; i++) {
-			toFill.draw(m_x, m_y + i);
-		}
+		MyRect center(0, 0, 75, 75);
+		center.drawFilled(m_x - 37, m_y - 37);
 
 		MyRect border(0, 0, 75, 75);
 		LabSetColor(LABCOLOR_BLACK);
@@ -22,8 +19,8 @@ namespace td{
 
 	void Spawner::move_all() {
 		for (int i = 0; i<m_units.size(); i++) {
-			if (m_units.at(i).isAlive()) {
-				m_units.at(i).move();
+			if (m_units[i].isAlive()) {
+				m_units[i].move();
 			} else {
 				m_units.erase(m_units.begin() + i);
 			}
@@ -32,7 +29,7 @@ namespace td{
 
 	void Spawner::draw_all() {
 		for (int i = 0; i<m_units.size(); i++) {
-			m_units.at(i).draw();
+			m_units[i].draw();
 		}
 	}
 }

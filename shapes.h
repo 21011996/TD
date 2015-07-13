@@ -31,6 +31,7 @@ struct MyRect : IDrawable
 {
 	MyRect(int lx, int ty, int rx, int by) : m_lx(lx), m_ty(ty), m_rx(rx), m_by(by) {}
 	void draw(int x, int y) override;
+	void drawFilled(int x, int y);
 
 private :
 	int m_lx, m_ty, m_rx, m_by;

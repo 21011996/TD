@@ -4,12 +4,9 @@
 namespace td{
 
 	void Creep::draw() {
-		MyLine toFill(0, 0, 50, 0);
 		LabSetColor(m_color);
-
-		for (int i = -25; i<25; i++) {
-			toFill.draw(m_x, m_y + i);
-		}
+		MyRect center(0, 0, 50, 0);
+		center.drawFilled(m_x - 25, m_y - 25);
 
 		MyRect border(0, 0, 50, 50);
 		LabSetColor(LABCOLOR_BLACK);
