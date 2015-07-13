@@ -18,7 +18,7 @@ namespace td{
 	}
 
 	void Spawner::move_all() {
-		int i = 0;
+		size_t i = 0;
 		while (i < m_units.size()) {
 			if (m_units[i].isAlive()) {
 				m_units[i].move();
@@ -30,7 +30,7 @@ namespace td{
 	}
 
 	void Spawner::draw_all() {
-		for (int i = 0; i<m_units.size(); i++) {
+		for (size_t i = 0; i<m_units.size(); i++) {
 			m_units[i].draw();
 		}
 	}

@@ -22,7 +22,7 @@ private:
 	int m_speed;
 	int m_damage;
 	bool m_inProgress;
-	Creep m_target;
+	Creep & m_target;
 };
 
 struct Tower
@@ -30,8 +30,8 @@ struct Tower
 	Tower(int x, int y, int damage, int range);
 	void fire();
 	void moveMissiles();
-	bool inRange(Creep creep);
-	void addTarget(Spawner spawner);
+	bool inRange(Creep & creep);
+	void addTarget(Spawner & spawner);
 
 	void draw();
 	void drawMissiles();

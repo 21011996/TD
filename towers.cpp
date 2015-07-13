@@ -12,12 +12,12 @@ namespace td{
 
 	void Tower::fire() {
 		if (inRange(m_target)) {
-			m_missiles.push_back(Missile(m_x, m_y, 30, 50, m_target));
+			m_missiles.push_back(Missile(m_x, m_y, 20, 50, m_target));
 		}
 	}
 
 	void Tower::moveMissiles() {
-		int i = 0;
+		size_t i = 0;
 		while (i < m_missiles.size()) {
 			if (m_missiles[i].inProgress()) {
 				m_missiles[i].move();
@@ -28,10 +28,10 @@ namespace td{
 		}
 	}
 
-	void Tower::addTarget(Spawner spawner) {
+	void Tower::addTarget(Spawner & spawner) {
 		if (spawner.getAmountOfCreeps()) {
 			std::vector<Creep> condidates = spawner.getCreeps();
-			for (int i = 0; i< condidates.size(); i++) {
+			for (size_t i = 0; i< condidates.size(); i++) {
 				if (inRange(condidates[i])) {
 					m_target = condidates[i];
 					break;
@@ -40,7 +40,7 @@ namespace td{
 		}
 	}
 
-	bool Tower::inRange(Creep creep) {
+	bool Tower::inRange(Creep & creep) {
 		MyVector creep_position = creep.getPosition();
 		MyVector tower_to_creep(creep_position.getX() - m_x, creep_position.getY());
 		return (tower_to_creep.getLength() < m_range);
@@ -57,7 +57,7 @@ namespace td{
 	}
 
 	void Tower::drawMissiles() {
-		for (int i = 0; i< m_missiles.size(); i++) {
+		for (size_t i = 0; i< m_missiles.size(); i++) {
 			m_missiles[i].draw();
 		}
 	}
@@ -85,7 +85,7 @@ namespace td{
 			m_target.damage(m_damage);
 			m_inProgress = false;
 		} else {
-			moveAt(normal_to.getX()*m_speed, normal_to.getY()*m_speed);
+			moveAt((int) (normal_to.getX()*m_speed),(int) (normal_to.getY()*m_speed));
 		}
 	}
 

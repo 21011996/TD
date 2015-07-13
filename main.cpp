@@ -26,7 +26,7 @@ int main()
 	Cursor cursor(0,0,10,8);
 
 	Spawner ololo(50, 350);
-	Tower towerololo(350, 250, 50, 500);
+	Tower towerololo(350, 250, 10, 500);
 
 
 

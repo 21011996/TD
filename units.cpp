@@ -32,7 +32,7 @@ namespace td{
 	}
 
 	MyVector Creep::getPosition() {
-		return MyVector(m_x, m_y);
+		return MyVector((float) m_x,(float) m_y);
 	}
 
 }
