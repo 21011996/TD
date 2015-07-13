@@ -6,6 +6,8 @@
 #include "shapes.h"
 #include "navgrid.h"
 #include "labengine/labengine.h"
+#include "spawner.h"
+#include "towers.h"
 
 namespace 
 {
@@ -23,9 +25,13 @@ int main()
 	grid.set_opacity(1);
 	Cursor cursor(0,0,10,8);
 
+	Spawner ololo(50, 350);
+	Tower towerololo(350, 250, 50, 500);
+
+
 
 	while (1) {
-		LabClear();
+		LabClearWith(LABCOLOR_GREEN);
 
 		if (LabInputKeyReady())
 		{
@@ -42,6 +48,18 @@ int main()
 			}
 			cursor.move(key);
 		}
+		if (!ololo.getAmountOfCreeps()) {
+			ololo.spawn();
+		}
+		ololo.move_all();
+		towerololo.addTarget(ololo);
+		towerololo.fire();
+		towerololo.moveMissiles();
+		LabDelay(10);
+		ololo.draw();
+		ololo.draw_all();
+		towerololo.draw();
+		towerololo.drawMissiles();
 		grid.draw(cursor.get_x(), cursor.get_y());
 		
 		LabDrawFlush();

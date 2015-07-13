@@ -5,7 +5,7 @@ namespace td{
 
 	void Creep::draw() {
 		LabSetColor(m_color);
-		MyRect center(0, 0, 50, 0);
+		MyRect center(0, 0, 50, 50);
 		center.drawFilled(m_x - 25, m_y - 25);
 
 		MyRect border(0, 0, 50, 50);
@@ -26,6 +26,13 @@ namespace td{
 
 	void Creep::move() {
 		m_x += m_speed; //temporary movement
+		if (m_x > LabGetWidth()) {
+			m_alive = false;
+		}
+	}
+
+	MyVector Creep::getPosition() {
+		return MyVector(m_x, m_y);
 	}
 
 }

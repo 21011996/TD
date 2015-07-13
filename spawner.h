@@ -15,6 +15,9 @@ struct Spawner
 	void spawn();
 	void move_all();
 	void draw_all();
+	int getAmountOfCreeps(); // temp function fo debug
+
+	std::vector<Creep> getCreeps();
 
 private :
 	int m_x, m_y;

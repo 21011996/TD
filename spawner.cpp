@@ -13,14 +13,16 @@ namespace td{
 	}
 
 	void Spawner::spawn() {
-		Creep temporary(m_x, m_y, 10, 100, LABCOLOR_DARK_RED);
+		Creep temporary(m_x, m_y, 10, 100, LABCOLOR_WHITE);
 		m_units.push_back(temporary);
 	}
 
 	void Spawner::move_all() {
-		for (int i = 0; i<m_units.size(); i++) {
+		int i = 0;
+		while (i < m_units.size()) {
 			if (m_units[i].isAlive()) {
 				m_units[i].move();
+				i++;
 			} else {
 				m_units.erase(m_units.begin() + i);
 			}
@@ -31,5 +33,13 @@ namespace td{
 		for (int i = 0; i<m_units.size(); i++) {
 			m_units[i].draw();
 		}
+	}
+
+	int Spawner::getAmountOfCreeps() {
+		return m_units.size();
+	}
+
+	std::vector<Creep> Spawner::getCreeps() {
+		return m_units;
 	}
 }

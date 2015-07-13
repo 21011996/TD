@@ -2,10 +2,6 @@
 
 namespace td{
 
-
-
-
-
 	float MyVector::getX() {
 		return m_x;
 	}

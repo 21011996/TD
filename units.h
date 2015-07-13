@@ -1,6 +1,7 @@
 #pragma once
 #include "shapes.h"
 #include "labengine\labengine.h"
+#include "myMath.h"
 
 namespace td
 {
@@ -8,11 +9,14 @@ namespace td
 struct Creep
 {
 	Creep(int x, int y, int speed, int health, labcolor_t color) : m_x(x), m_y(y), m_speed(speed), m_health(health), m_color(color), m_alive(true) {};
+	Creep(){};
 	void draw();
 
 	void damage(int dealt);
 	bool isAlive();
 	void move();
+
+	MyVector getPosition();
 	
 
 private :
