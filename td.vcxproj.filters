@@ -37,6 +37,9 @@
     <ClCompile Include="spawner.cpp">
       <Filter>Game objects</Filter>
     </ClCompile>
+    <ClCompile Include="myMath.cpp">
+      <Filter>Game objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shapes.h">
@@ -58,6 +61,9 @@
       <Filter>Common</Filter>
     </ClInclude>
     <ClInclude Include="spawner.h">
+      <Filter>Game objects</Filter>
+    </ClInclude>
+    <ClInclude Include="myMath.h">
       <Filter>Game objects</Filter>
     </ClInclude>
   </ItemGroup>

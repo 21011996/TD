@@ -82,6 +82,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="level.cpp" />
+    <ClCompile Include="myMath.cpp" />
     <ClCompile Include="spawner.cpp" />
     <ClCompile Include="navgrid.cpp" />
     <ClCompile Include="main.cpp" />
@@ -92,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="level.h" />
+    <ClInclude Include="myMath.h" />
     <ClInclude Include="spawner.h" />
     <ClInclude Include="navgrid.h" />
     <ClInclude Include="shapes.h" />
