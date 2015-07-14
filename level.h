@@ -18,7 +18,9 @@ struct Level
 private:
 	int m_x_size, m_y_size;
 	int m_health;
+	bool m_alive;
 	bool m_running;
+	int m_level[10][8]; //dunno how to do it properly
 	Grid m_grid;
 	Cursor m_cursor;
 	Timer m_timer;

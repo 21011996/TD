@@ -13,7 +13,7 @@ namespace td{
 	}
 
 	void Spawner::spawn() {
-		Creep temporary(m_x, m_y, 2, 100, LABCOLOR_WHITE);
+		Creep temporary(m_x, m_y, m_speed, m_health_default, LABCOLOR_WHITE);
 		m_units.push_back(temporary);
 	}
 
@@ -24,11 +24,21 @@ namespace td{
 				m_units[i].move();
 				i++;
 			} else {
-				m_units.erase(m_units.begin() + i);
+				if (m_units[i].reached()) {
+					m_damage_done+=1;
+					m_units.erase(m_units.begin() + i);
+				} else {
+					m_units.erase(m_units.begin() + i);
+				}
 			}
 		}
 	}
 
+	int Spawner::ask_for_damage() {
+		int answer = m_damage_done;
+		m_damage_done = 0;
+		return answer;
+	}
 	void Spawner::draw_all() {
 		for (size_t i = 0; i<m_units.size(); i++) {
 			m_units[i].draw();

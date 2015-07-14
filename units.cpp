@@ -9,7 +9,7 @@ namespace td{
 		center.drawFilled(m_x - 25, m_y - 25);
 
 		LabSetColor(m_color);
-		MyRect health(0, 0, m_health/2, m_health/2);
+		MyRect health(0, 0, (m_health*50/m_health_default), (m_health*50/m_health_default));
 		health.drawFilled(m_x - 25, m_y - 25);
 
 		MyRect border(0, 0, 50, 50);
@@ -28,10 +28,15 @@ namespace td{
 		return m_alive;
 	}
 
+	bool Creep::reached() {
+		return m_reached;
+	}
+
 	void Creep::move() {
 		m_x += m_speed; //temporary movement
 		if (m_x > LabGetWidth()) {
 			m_alive = false;
+			m_reached = true;
 		}
 	}
 

@@ -12,6 +12,7 @@ struct Missile
 	Missile(int x, int y, int speed, int damage, Creep *target) : m_x(x), m_y(y), m_speed(speed), m_damage(damage), m_target(target), m_inProgress(true) {};
 	void move();
 	void moveAt(int x, int y);
+	void setNewTarget(Creep *target);
 
 	bool inProgress();
 
@@ -32,6 +33,7 @@ struct Tower
 	void moveMissiles();
 	bool inRange(Creep & creep);
 	void addTarget(Spawner & spawner);
+	void updateTarget();
 
 	void draw();
 	void drawMissiles();
@@ -39,6 +41,7 @@ struct Tower
 private:
 	int m_x, m_y, m_damage;
 	int m_range;
+	bool m_firing;
 	Creep *m_target;
 	std::vector<Missile> m_missiles;
 };
