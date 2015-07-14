@@ -102,7 +102,7 @@ namespace td{
 					}
 				}
 
-				if ((m_timer.getTime() % 500) == 0) {
+				if ((m_timer.getTime() % 100) == 0) {
 					m_spawner.spawn();
 				}
 
@@ -111,15 +111,15 @@ namespace td{
 					m_towers[i].updateTarget();
 				}
 				for (size_t i = 0; i<m_towers.size(); i++) {
-					if ((m_timer.getTime() % 100) == 0) {
+					if ((m_timer.getTime() % 20) == 0) {
 						m_towers[i].fire();
 					}
-					if ((m_timer.getTime() % 5) == 0) {
+					if ((m_timer.getTime() % 1) == 0) {
 						m_towers[i].moveMissiles();
 					}
 				}
 				
-				if ((m_timer.getTime() % 10) == 0) {
+				if ((m_timer.getTime() % 2) == 0) {
 					m_spawner.move_all();
 				}
 
