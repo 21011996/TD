@@ -1,17 +1,18 @@
 #include "timer.h"
 
 
-namespace utils
+namespace td
 {
+	void Timer::tick() {
+		m_current+=1;
+		LabDelay(1);
+	}
 
-void Timer::Start()
-{
+	__int64 Timer::getTime() {
+		return m_current;
+	}
 
-}
-
-float Timer::GetDeltaTime()
-{
-	return 0;
-}
-
+	__int64 Timer::getDeltaTime(int time) {
+		return m_current-time;
+	}
 }
