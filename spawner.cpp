@@ -13,7 +13,7 @@ namespace td{
 	}
 
 	void Spawner::spawn() {
-		Creep temporary(m_x, m_y, 10, 100, LABCOLOR_WHITE);
+		Creep temporary(m_x, m_y, 10, 5000, LABCOLOR_WHITE);
 		m_units.push_back(temporary);
 	}
 
@@ -39,7 +39,7 @@ namespace td{
 		return m_units.size();
 	}
 
-	std::vector<Creep> Spawner::getCreeps() {
+	std::vector<Creep>& Spawner::getCreeps() {
 		return m_units;
 	}
 }

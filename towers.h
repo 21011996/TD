@@ -9,7 +9,7 @@ namespace td
 
 struct Missile
 {
-	Missile(int x, int y, int speed, int damage, Creep target) : m_x(x), m_y(y), m_speed(speed), m_damage(damage), m_target(target), m_inProgress(true) {};
+	Missile(int x, int y, int speed, int damage, Creep *target) : m_x(x), m_y(y), m_speed(speed), m_damage(damage), m_target(target), m_inProgress(true) {};
 	void move();
 	void moveAt(int x, int y);
 
@@ -22,7 +22,7 @@ private:
 	int m_speed;
 	int m_damage;
 	bool m_inProgress;
-	Creep & m_target;
+	Creep *m_target;
 };
 
 struct Tower
@@ -39,7 +39,7 @@ struct Tower
 private:
 	int m_x, m_y, m_damage;
 	int m_range;
-	Creep m_target;
+	Creep *m_target;
 	std::vector<Missile> m_missiles;
 };
 
