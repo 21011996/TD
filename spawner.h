@@ -10,6 +10,7 @@ namespace td
 struct Spawner
 {
 	Spawner(int x, int y) : m_x(x), m_y(y) {};
+	Spawner(){};
 	void draw();
 
 	void spawn();

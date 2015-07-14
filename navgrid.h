@@ -8,6 +8,7 @@ struct Grid
 {
 public :
 	Grid(int num_cells_x, int num_cells_y, int cell_size);
+	Grid(){};
 
 	void draw(int cursor_x, int cursor_y) const;
 	void set_opacity(bool opacity);
@@ -22,6 +23,7 @@ struct Cursor
 {
 public :
 	Cursor(int x, int y, int max_x, int max_y);
+	Cursor(){};
 	void move(labkey_t key);
 
 	void get_pos(int &x, int &y) const;
