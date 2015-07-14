@@ -4,9 +4,13 @@
 namespace td{
 
 	void Creep::draw() {
-		LabSetColor(m_color);
+		LabSetColor(LABCOLOR_DARK_RED);
 		MyRect center(0, 0, 50, 50);
 		center.drawFilled(m_x - 25, m_y - 25);
+
+		LabSetColor(m_color);
+		MyRect health(0, 0, m_health/2, m_health/2);
+		health.drawFilled(m_x - 25, m_y - 25);
 
 		MyRect border(0, 0, 50, 50);
 		LabSetColor(LABCOLOR_BLACK);

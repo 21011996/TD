@@ -12,7 +12,7 @@ namespace td{
 
 	void Tower::fire() {
 		if (inRange(*m_target)) {
-			m_missiles.push_back(Missile(m_x, m_y, 20, 50, m_target));
+			m_missiles.push_back(Missile(m_x, m_y, 20, 20, m_target));
 		}
 	}
 

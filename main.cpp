@@ -48,7 +48,7 @@ int main()
 			}
 			cursor.move(key);
 		}
-		if (!ololo.getAmountOfCreeps()) {
+		if (ololo.getAmountOfCreeps() <= 5) {
 			ololo.spawn();
 		}
 		ololo.move_all();
