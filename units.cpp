@@ -3,18 +3,18 @@
 
 namespace td{
 
-	void Creep::draw() {
+	void Creep::draw(int size) {
 		LabSetColor(LABCOLOR_DARK_RED);
-		MyRect center(0, 0, 50, 50);
-		center.drawFilled(m_x - 25, m_y - 25);
+		MyRect center(0, 0, 50*size/100, 50*size/100);
+		center.drawFilled(m_x - 50*size/200, m_y - 50*size/200);
 
 		LabSetColor(m_color);
-		MyRect health(0, 0, (m_health*50/m_health_default), (m_health*50/m_health_default));
-		health.drawFilled(m_x - 25, m_y - 25);
+		MyRect health(0, 0, (m_health*50*size/100/m_health_default), (m_health*50*size/100/m_health_default));
+		health.drawFilled(m_x - 50*size/200, m_y - 50*size/200);
 
-		MyRect border(0, 0, 50, 50);
+		MyRect border(0, 0, 50*size/100, 50*size/100);
 		LabSetColor(LABCOLOR_BLACK);
-		border.draw(m_x - 25, m_y - 25);
+		border.draw(m_x - 50*size/200, m_y - 50*size/200);
 	}
 
 	void Creep::damage(int dealt) {

@@ -16,7 +16,7 @@ struct Missile
 
 	bool inProgress();
 
-	void draw();
+	void draw(int size);
 
 private:
 	int m_x, m_y;
@@ -35,8 +35,8 @@ struct Tower
 	void addTarget(Spawner & spawner);
 	void updateTarget();
 
-	void draw();
-	void drawMissiles();
+	void draw(int size);
+	void drawMissiles(int size);
 
 private:
 	int m_x, m_y, m_damage;

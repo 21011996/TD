@@ -13,6 +13,7 @@ public :
 	void draw(int cursor_x, int cursor_y) const;
 	void set_opacity(bool opacity);
 	bool get_opacity() const;
+	int get_size();
 
 private :
 	int m_num_cells_x, m_num_cells_y, m_cell_size;

@@ -12,6 +12,10 @@ namespace td {
 		return m_opacity;
 	}
 
+	int Grid::get_size() {
+		return m_cell_size;
+	}
+
 	void Grid::draw(int cursor_x, int cursor_y) const{
 		if (m_opacity) {
 			LabSetColor(LABCOLOR_WHITE);

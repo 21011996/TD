@@ -2,14 +2,14 @@
 
 namespace td{
 
-	void Spawner::draw() {
+	void Spawner::draw(int size) {
 		LabSetColor(LABCOLOR_CYAN);
-		MyRect center(0, 0, 75, 75);
-		center.drawFilled(m_x - 37, m_y - 37);
+		MyRect center(0, 0, 75*size/100, 75*size/100);
+		center.drawFilled(m_x - 75*size/200, m_y - 75*size/200);
 
-		MyRect border(0, 0, 75, 75);
+		MyRect border(0, 0, 75*size/100, 75*size/100);
 		LabSetColor(LABCOLOR_BLACK);
-		border.draw(m_x - 37, m_y - 37);
+		border.draw(m_x - 75*size/200, m_y - 75*size/200);
 	}
 
 	void Spawner::spawn() {
@@ -28,6 +28,7 @@ namespace td{
 					m_damage_done+=1;
 					m_units.erase(m_units.begin() + i);
 				} else {
+					m_money_earned++;
 					m_units.erase(m_units.begin() + i);
 				}
 			}
@@ -39,9 +40,16 @@ namespace td{
 		m_damage_done = 0;
 		return answer;
 	}
-	void Spawner::draw_all() {
+
+	int Spawner::ask_for_money() {
+		int answer = m_money_earned;
+		m_money_earned = 0;
+		return answer;
+	}
+
+	void Spawner::draw_all(int size) {
 		for (size_t i = 0; i<m_units.size(); i++) {
-			m_units[i].draw();
+			m_units[i].draw(size);
 		}
 	}
 

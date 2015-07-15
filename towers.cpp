@@ -64,30 +64,30 @@ namespace td{
 		return (tower_to_creep.getLength() < m_range);
 	}
 
-	void Tower::draw() {
+	void Tower::draw(int size) {
 		LabSetColor(LABCOLOR_DARK_BLUE);
-		MyRect center(0, 0, 80, 80);
-		center.drawFilled(m_x - 40, m_y - 40);
+		MyRect center(0, 0, 80*size/100, 80*size/100);
+		center.drawFilled(m_x - 80*size/200, m_y - 80*size/200);
 
-		MyRect border(0, 0, 80, 80);
+		MyRect border(0, 0, 80*size/100, 80*size/100);
 		LabSetColor(LABCOLOR_BLACK);
-		border.draw(m_x - 40, m_y - 40);
+		border.draw(m_x - 80*size/200, m_y - 80*size/200);
 	}
 
-	void Tower::drawMissiles() {
+	void Tower::drawMissiles(int size) {
 		for (size_t i = 0; i< m_missiles.size(); i++) {
-			m_missiles[i].draw();
+			m_missiles[i].draw(size);
 		}
 	}
 
-	void Missile::draw() {
+	void Missile::draw(int size) {
 		LabSetColor(LABCOLOR_RED);
-		MyRect center(0, 0, 10, 10);
-		center.drawFilled(m_x - 5, m_y - 5);
+		MyRect center(0, 0, 10*size/100, 10*size/100);
+		center.drawFilled(m_x - 10*size/200, m_y - 10*size/200);
 
-		MyRect border(0, 0, 10, 10);
+		MyRect border(0, 0, 10*size/100, 10*size/100);
 		LabSetColor(LABCOLOR_BLACK);
-		border.draw(m_x - 5, m_y - 5);
+		border.draw(m_x - 10*size/200, m_y - 10*size/200);
 	}
 
 	void Missile::moveAt(int x, int y) {
