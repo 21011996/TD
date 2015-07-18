@@ -14,7 +14,7 @@ namespace td{
 		m_grid.set_opacity(1);
 		m_cursor = Cursor(0, 0, m_x_size, m_y_size);
 
-		m_spawner = Spawner(50, LabGetHeight() / 2, 100, 2);
+		m_spawner = Spawner(50, LabGetHeight() / 2, 400, 2);
 		m_timer = Timer(0);
 
 		for (int i = 0; i<m_x_size; i++) {
