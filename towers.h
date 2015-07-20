@@ -46,7 +46,4 @@ private:
 	std::vector<Missile> m_missiles;
 };
 
-
-
-
 } // namespace td
