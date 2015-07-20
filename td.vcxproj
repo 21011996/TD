@@ -88,6 +88,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="shapes.cpp" />
     <ClCompile Include="timer.cpp" />
+    <ClCompile Include="towerBase.cpp" />
     <ClCompile Include="towers.cpp" />
     <ClCompile Include="units.cpp" />
   </ItemGroup>
@@ -98,6 +99,7 @@
     <ClInclude Include="navgrid.h" />
     <ClInclude Include="shapes.h" />
     <ClInclude Include="timer.h" />
+    <ClInclude Include="towerBase.h" />
     <ClInclude Include="towers.h" />
     <ClInclude Include="units.h" />
   </ItemGroup>

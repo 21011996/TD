@@ -1,8 +1,6 @@
 #pragma once
-#include "shapes.h"
-#include <vector>
-#include "units.h"
-#include "spawner.h"
+
+#include "towerBase.h"
 
 namespace td
 {
@@ -26,23 +24,20 @@ private:
 	Creep *m_target;
 };
 
-struct Tower
+struct Tower : TowerBase
 {
 	Tower(int x, int y, int damage, int range);
 	void fire();
 	void moveMissiles();
-	bool inRange(Creep & creep);
-	void addTarget(Spawner & spawner);
 	void updateTarget();
+	Creep* getTarget();
 
-	void draw(int size);
-	void drawMissiles(int size);
+	void addTarget(Spawner & spawner);
+
+	void drawMissiles(int size) override;
 
 private:
-	int m_x, m_y, m_damage;
-	int m_range;
 	bool m_firing;
-	Creep *m_target;
 	std::vector<Missile> m_missiles;
 };
 
