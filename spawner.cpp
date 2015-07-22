@@ -2,6 +2,19 @@
 
 namespace td{
 
+	Spawner::Spawner(int x, int y, int health, int speed, double spawn_rate) {
+		m_x = x; 
+		m_y = y; 
+		m_health_default = health; 
+		m_speed = speed; 
+		m_damage_done = 0; 
+		m_money_earned = 0; 
+		m_spawn_rate = spawn_rate;
+		m_timer = Timer();
+		m_last_move = m_timer.getTime();
+		m_last_spawn = m_timer.getTime();
+	}
+
 	void Spawner::draw(int size) {
 		LabSetColor(LABCOLOR_CYAN);
 		MyRect center(0, 0, 75*size/100, 75*size/100);
@@ -13,25 +26,31 @@ namespace td{
 	}
 
 	void Spawner::spawn() {
-		Creep temporary(m_x, m_y, m_speed, m_health_default, LABCOLOR_WHITE);
-		m_units.push_back(temporary);
+		if (m_timer.getDeltaTime(m_last_spawn) > m_spawn_rate) {
+			Creep temporary(m_x, m_y, m_speed, m_health_default, LABCOLOR_WHITE);
+			m_units.push_back(temporary);
+			m_last_spawn = m_timer.getTime();
+		}
 	}
 
 	void Spawner::move_all() {
-		size_t i = 0;
-		while (i < m_units.size()) {
-			if (m_units[i].isAlive()) {
-				m_units[i].move();
-				i++;
-			} else {
-				if (m_units[i].reached()) {
-					m_damage_done+=1;
-					m_units.erase(m_units.begin() + i);
+		if (m_timer.getDeltaTime(m_last_move) > 3) {
+			size_t i = 0;
+			while (i < m_units.size()) {
+				if (m_units[i].isAlive()) {
+					m_units[i].move();
+					i++;
 				} else {
-					m_money_earned++;
-					m_units.erase(m_units.begin() + i);
+					if (m_units[i].reached()) {
+						m_damage_done+=1;
+						m_units.erase(m_units.begin() + i);
+					} else {
+						m_money_earned++;
+						m_units.erase(m_units.begin() + i);
+					}
 				}
 			}
+			m_last_move = m_timer.getTime();
 		}
 	}
 

@@ -7,14 +7,13 @@ namespace td
 
 struct Timer
 {
-	Timer(int start_time): m_current(start_time) {};
-	Timer(){};
-	void tick();
-	__int64 getTime();
-	__int64 getDeltaTime(int time);
+	Timer();
+	void reset();
+	double getTime();
+	double getDeltaTime(double time);
 
 private :
-	__int64 m_current;
+	LARGE_INTEGER m_timerFrequency, m_timerStart, m_current_time;
 };
 
 } // namespace utils
