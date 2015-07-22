@@ -11,11 +11,19 @@ namespace td{
 		m_firing = false;
 	}
 
-	Creep* Tower::getTarget(){
-		if
+	void Tower::setTarget(){
+		if (!m_targets.empty()) {
+			m_target = m_targets[0];
+		} else {
+			m_target = NULL;
+		}
 	}
 
 	void Tower::fire() {
+		setTarget();
+		if (m_target != NULL) {
+			m_firing = true;
+		}
 		if (m_firing) {
 			if (inRange(*m_target)) {
 				m_missiles.push_back(Missile(m_x, m_y, 4, m_damage, m_target));

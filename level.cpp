@@ -122,18 +122,18 @@ namespace td{
 				m_spawner.spawn();
 
 
-				/*for (size_t i = 0; i<m_towers.size(); i++) {
+				for (size_t i = 0; i<m_towers.size(); i++) {
 					m_towers[i].addTarget(m_spawner);
 					m_towers[i].updateTarget();
 				}
 				for (size_t i = 0; i<m_towers.size(); i++) {
-					if ((m_timer.getTime() % 20) == 0) {
+					if ((m_timer.getTime() > 20) == 0) {
 						m_towers[i].fire();
 					}
-					if ((m_timer.getTime() % 1) == 0) {
+					if ((m_timer.getTime() > 1) == 0) {
 						m_towers[i].moveMissiles();
 					}
-				}*/
+				}
 				
 				m_spawner.move_all();
 

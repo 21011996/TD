@@ -30,7 +30,7 @@ struct Tower : TowerBase
 	void fire();
 	void moveMissiles();
 	void updateTarget();
-	Creep* getTarget();
+	void setTarget();
 
 	void addTarget(Spawner & spawner);
 
@@ -38,6 +38,7 @@ struct Tower : TowerBase
 
 private:
 	bool m_firing;
+	Creep* m_target;
 	std::vector<Missile> m_missiles;
 };
 
