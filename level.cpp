@@ -14,8 +14,8 @@ namespace td{
 		m_grid.set_opacity(1);
 		m_cursor = Cursor(0, 0, m_x_size, m_y_size);
 
-		m_spawner = Spawner(50, LabGetHeight() / 2, 100, 2);
-		m_timer = Timer(0);
+		m_spawner = Spawner(50, LabGetHeight() / 2, 400, 2, 200);
+		m_timer = Timer();
 
 		for (int i = 0; i<m_x_size; i++) {
 			for (int j = 0; j<m_y_size; j++) {
@@ -119,11 +119,10 @@ namespace td{
 				writeStatus();
 
 
-				if ((m_timer.getTime() % 100) == 0) {
-					m_spawner.spawn();
-				}
+				m_spawner.spawn();
 
-				for (size_t i = 0; i<m_towers.size(); i++) {
+
+				/*for (size_t i = 0; i<m_towers.size(); i++) {
 					m_towers[i].addTarget(m_spawner);
 					m_towers[i].updateTarget();
 				}
@@ -134,13 +133,10 @@ namespace td{
 					if ((m_timer.getTime() % 1) == 0) {
 						m_towers[i].moveMissiles();
 					}
-				}
+				}*/
 				
-				if ((m_timer.getTime() % 2) == 0) {
-					m_spawner.move_all();
-				}
+				m_spawner.move_all();
 
-				m_timer.tick();
 			}
 
 			

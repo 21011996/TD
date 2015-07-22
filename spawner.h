@@ -2,6 +2,7 @@
 
 #include "shapes.h"
 #include "units.h"
+#include "timer.h"
 #include <vector>
 
 namespace td
@@ -9,7 +10,7 @@ namespace td
 
 struct Spawner
 {
-	Spawner(int x, int y, int health, int speed) : m_x(x), m_y(y), m_health_default(health), m_speed(speed), m_damage_done(0), m_money_earned(0) {};
+	Spawner(int x, int y, int health, int speed, double spawn_rate);
 	Spawner(){};
 	void draw(int size);
 
@@ -26,6 +27,9 @@ private :
 	int m_x, m_y;
 	int m_money_earned;
 	int m_speed, m_health_default;
+	Timer m_timer;
+	double m_last_spawn, m_last_move;
+	double m_spawn_rate;
 	std::vector<Creep> m_units;
 	int m_damage_done;
 };

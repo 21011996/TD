@@ -3,16 +3,24 @@
 
 namespace td
 {
-	void Timer::tick() {
-		m_current+=1;
-		LabDelay(1);
+	Timer::Timer() {
+		QueryPerformanceFrequency(&m_timerFrequency);
+		QueryPerformanceCounter(&m_timerStart);
+		QueryPerformanceCounter(&m_current_time);
 	}
 
-	__int64 Timer::getTime() {
-		return m_current;
+	void Timer::reset(){
+		QueryPerformanceFrequency(&m_timerFrequency);
+		QueryPerformanceCounter(&m_timerStart);
+		QueryPerformanceCounter(&m_current_time);
 	}
 
-	__int64 Timer::getDeltaTime(int time) {
-		return m_current-time;
+	double Timer::getTime() {
+		QueryPerformanceCounter(&m_current_time);
+		return (double) (m_current_time.QuadPart * 1000 / m_timerFrequency.QuadPart);
+	}
+
+	double Timer::getDeltaTime(double time) {
+		return getTime()-time;
 	}
 }
