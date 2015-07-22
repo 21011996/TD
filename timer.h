@@ -11,9 +11,12 @@ struct Timer
 	void reset();
 	double getTime();
 	double getDeltaTime(double time);
+	void pause();
+	void unPause();
 
 private :
-	LARGE_INTEGER m_timerFrequency, m_timerStart, m_current_time;
+	LARGE_INTEGER m_timerFrequency, m_current_time;
+	double m_time_paused;
 };
 
 } // namespace utils

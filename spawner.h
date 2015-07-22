@@ -10,12 +10,12 @@ namespace td
 
 struct Spawner
 {
-	Spawner(int x, int y, int health, int speed, double spawn_rate);
+	Spawner(int x, int y, int health, int speed, double spawn_rate, Timer timer);
 	Spawner(){};
 	void draw(int size);
 
-	void spawn();
-	void move_all();
+	void spawn(Timer & timer);
+	void move_all(Timer & timer);
 	void draw_all(int size);
 	int getAmountOfCreeps(); // temp function fo debug
 	int ask_for_damage();
@@ -27,7 +27,6 @@ private :
 	int m_x, m_y;
 	int m_money_earned;
 	int m_speed, m_health_default;
-	Timer m_timer;
 	double m_last_spawn, m_last_move;
 	double m_spawn_rate;
 	std::vector<Creep> m_units;

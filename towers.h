@@ -28,9 +28,9 @@ private:
 
 struct Tower
 {
-	Tower(int x, int y, int damage, int range);
-	void fire();
-	void moveMissiles();
+	Tower(int x, int y, int damage, int range, double fire_rate);
+	void fire(Timer & timer);
+	void moveMissiles(Timer & timer);
 	bool inRange(Creep & creep);
 	void addTarget(Spawner & spawner);
 	void updateTarget();
@@ -42,6 +42,7 @@ private:
 	int m_x, m_y, m_damage;
 	int m_range;
 	bool m_firing;
+	double m_last_fired, m_last_moved, m_fire_rate;
 	Creep *m_target;
 	std::vector<Missile> m_missiles;
 };

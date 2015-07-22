@@ -14,8 +14,9 @@ namespace td{
 		m_grid.set_opacity(1);
 		m_cursor = Cursor(0, 0, m_x_size, m_y_size);
 
-		m_spawner = Spawner(50, LabGetHeight() / 2, 400, 2, 200);
+		m_spawner = Spawner(50, LabGetHeight() / 2, 400, 2, 200, m_timer);
 		m_timer = Timer();
+		m_timer.pause();
 
 		for (int i = 0; i<m_x_size; i++) {
 			for (int j = 0; j<m_y_size; j++) {
@@ -68,7 +69,7 @@ namespace td{
 
 	void Level::addTower(int x, int y) {
 		if ((m_level[x][y] == 0) && (m_money>0)) {
-			m_towers.push_back(Tower((int) ((x+0.5) * m_grid.get_size()),(int) ((y+0.5) * m_grid.get_size()), 20, 500));
+			m_towers.push_back(Tower((int) ((x+0.5) * m_grid.get_size()),(int) ((y+0.5) * m_grid.get_size()), 20, 500, 50));
 			m_level[x][y] = 2;
 			m_money--;
 			writeStatus();
@@ -88,8 +89,10 @@ namespace td{
 					if (key == LABKEY_TAB) {
 						if (m_running) {
 							m_running = false;
+							m_timer.pause();
 						} else {
 							m_running = true;
+							m_timer.unPause();
 						}
 					}
 					if (key == LABKEY_ENTER) {
@@ -119,23 +122,19 @@ namespace td{
 				writeStatus();
 
 
-				m_spawner.spawn();
+				m_spawner.spawn(m_timer);
 
 
-				/*for (size_t i = 0; i<m_towers.size(); i++) {
+				for (size_t i = 0; i<m_towers.size(); i++) {
 					m_towers[i].addTarget(m_spawner);
 					m_towers[i].updateTarget();
 				}
 				for (size_t i = 0; i<m_towers.size(); i++) {
-					if ((m_timer.getTime() % 20) == 0) {
-						m_towers[i].fire();
-					}
-					if ((m_timer.getTime() % 1) == 0) {
-						m_towers[i].moveMissiles();
-					}
-				}*/
+					m_towers[i].fire(m_timer);
+					m_towers[i].moveMissiles(m_timer);
+				}
 				
-				m_spawner.move_all();
+				m_spawner.move_all(m_timer);
 
 			}
 

@@ -2,7 +2,7 @@
 
 namespace td{
 
-	Spawner::Spawner(int x, int y, int health, int speed, double spawn_rate) {
+	Spawner::Spawner(int x, int y, int health, int speed, double spawn_rate, Timer timer) {
 		m_x = x; 
 		m_y = y; 
 		m_health_default = health; 
@@ -10,9 +10,9 @@ namespace td{
 		m_damage_done = 0; 
 		m_money_earned = 0; 
 		m_spawn_rate = spawn_rate;
-		m_timer = Timer();
-		m_last_move = m_timer.getTime();
-		m_last_spawn = m_timer.getTime();
+
+		m_last_move = timer.getTime();
+		m_last_spawn = timer.getTime();
 	}
 
 	void Spawner::draw(int size) {
@@ -25,16 +25,16 @@ namespace td{
 		border.draw(m_x - 75*size/200, m_y - 75*size/200);
 	}
 
-	void Spawner::spawn() {
-		if (m_timer.getDeltaTime(m_last_spawn) > m_spawn_rate) {
+	void Spawner::spawn(Timer & timer) {
+		if (timer.getDeltaTime(m_last_spawn) > m_spawn_rate) {
 			Creep temporary(m_x, m_y, m_speed, m_health_default, LABCOLOR_WHITE);
 			m_units.push_back(temporary);
-			m_last_spawn = m_timer.getTime();
+			m_last_spawn = timer.getTime();
 		}
 	}
 
-	void Spawner::move_all() {
-		if (m_timer.getDeltaTime(m_last_move) > 3) {
+	void Spawner::move_all(Timer & timer) {
+		if (timer.getDeltaTime(m_last_move) > 3) {
 			size_t i = 0;
 			while (i < m_units.size()) {
 				if (m_units[i].isAlive()) {
@@ -50,7 +50,7 @@ namespace td{
 					}
 				}
 			}
-			m_last_move = m_timer.getTime();
+			m_last_move = timer.getTime();
 		}
 	}
 

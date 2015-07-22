@@ -3,31 +3,41 @@
 
 namespace td{
 
-	Tower::Tower(int x, int y, int damage, int range) {
+	Tower::Tower(int x, int y, int damage, int range, double fire_rate) {
 		m_x = x;
 		m_y = y;
 		m_damage = damage;
 		m_range = range;
 		m_firing = false;
+		m_fire_rate = fire_rate;
+		m_last_fired = 0;
+		m_last_moved = 0;
+
 	}
 
-	void Tower::fire() {
+	void Tower::fire(Timer & timer) {
 		if (m_firing) {
-			if (inRange(*m_target)) {
-				m_missiles.push_back(Missile(m_x, m_y, 4, m_damage, m_target));
+			if (timer.getDeltaTime(m_last_fired) > m_fire_rate) {
+				if (inRange(*m_target)) {
+					m_missiles.push_back(Missile(m_x, m_y, 4, m_damage, m_target));
+				}
+				m_last_fired = timer.getTime();
 			}
 		}
 	}
 
-	void Tower::moveMissiles() {
-		size_t i = 0;
-		while (i < m_missiles.size()) {
-			if (m_missiles[i].inProgress()) {
-				m_missiles[i].move();
-				i++;
-			} else {
-				m_missiles.erase(m_missiles.begin() + i);
+	void Tower::moveMissiles(Timer & timer) {
+		if (timer.getDeltaTime(m_last_moved) > 1) {
+			size_t i = 0;
+			while (i < m_missiles.size()) {
+				if (m_missiles[i].inProgress()) {
+					m_missiles[i].move();
+					i++;
+				} else {
+					m_missiles.erase(m_missiles.begin() + i);
+				}
 			}
+			m_last_moved = timer.getTime();
 		}
 	}
 
